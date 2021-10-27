@@ -8,7 +8,7 @@ import pandas as pd
 app = dash.Dash(__name__)
 
 df = pd.read_csv(r'data/dft-road-casualty-statistics-accident-2020.csv')
-df['date']= pd.to_datetime(df['date'])
+df['date']= pd.to_datetime(df['date'], format="%d/%m/%Y")
 
 # https://pandas.pydata.org/docs/reference/api/pandas.Series.to_frame.html#pandas-series-to-frame
 number_of_accidents_per_day = df.groupby(['date']).size().to_frame('number_of_accidents')
@@ -17,7 +17,10 @@ fig = px.line(
     number_of_accidents_per_day,
     x = number_of_accidents_per_day.index,
     y = "number_of_accidents",
-    title = "A Plotly Express Figure"
+    title = "No. of road accidents per day in 2020",
+    labels={
+        "number_of_accidents": "number of accidents"
+    },
 )
 
 app.layout = html.Div([
