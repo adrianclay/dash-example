@@ -1,27 +1,15 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+import plotly.express as px
 
 app = dash.Dash(__name__)
 
+df = px.data.iris()
+fig = px.line(df, x="sepal_width", y="sepal_length", color="species", title="A Plotly Express Figure")
 app.layout = html.Div([
-    html.H6("Change the value in the text box to see callbacks in action!"),
-    html.Div([
-        "Input: ",
-        dcc.Input(id='my-input', value='initial value', type='text')
-    ]),
-    html.Br(),
-    html.Div(id='my-output'),
+    dcc.Graph(figure=fig)
 ])
-
-@app.callback(
-    Output(component_id='my-output', component_property='children'),
-    Input(component_id='my-input', component_property='value')
-)
-def update_output_div(input_value):
-    return 'Outputz: {}'.format(input_value)
-
 
 if __name__ == '__main__':
     app.run_server(debug=True)
