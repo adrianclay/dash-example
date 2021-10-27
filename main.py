@@ -21,6 +21,7 @@ fig = px.line(
     labels={
         "number_of_accidents": "number of accidents"
     },
+    template="plotly_dark"
 )
 
 app.layout = html.Div([
