@@ -2,11 +2,24 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
+import pandas as pd
+
 
 app = dash.Dash(__name__)
 
-df = px.data.iris()
-fig = px.line(df, x="sepal_width", y="sepal_length", color="species", title="A Plotly Express Figure")
+df = pd.read_csv(r'data/dft-road-casualty-statistics-accident-2020.csv')
+df['date']= pd.to_datetime(df['date'])
+
+# https://pandas.pydata.org/docs/reference/api/pandas.Series.to_frame.html#pandas-series-to-frame
+number_of_accidents_per_day = df.groupby(['date']).size().to_frame('number_of_accidents')
+
+fig = px.line(
+    number_of_accidents_per_day,
+    x = number_of_accidents_per_day.index,
+    y = "number_of_accidents",
+    title = "A Plotly Express Figure"
+)
+
 app.layout = html.Div([
     dcc.Graph(figure=fig)
 ])
