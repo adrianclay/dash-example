@@ -1,5 +1,5 @@
 import pytest
-# import main
+import main
 
 def test_file1_method1():
 	x=5
