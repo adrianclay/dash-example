@@ -7,11 +7,12 @@ import pandas as pd
 
 app = dash.Dash(__name__)
 
-df = pd.read_csv(r'data/dft-road-casualty-statistics-accident-2020.csv')
+df = pd.read_csv(r'data/dft-road-casualty-statistics-accident-2020.csv', low_memory=False)
 df['date']= pd.to_datetime(df['date'], format="%d/%m/%Y")
 
 # https://pandas.pydata.org/docs/reference/api/pandas.Series.to_frame.html#pandas-series-to-frame
 number_of_accidents_per_day = df.groupby(['date']).size().to_frame('number_of_accidents')
+
 
 fig = px.line(
     number_of_accidents_per_day,
@@ -24,8 +25,22 @@ fig = px.line(
     template="plotly_dark"
 )
 
+
 app.layout = html.Div([
+    html.Div(children=[
+        html.Label('Dropdown'),
+        dcc.Dropdown(
+            options=[
+                {'label': 'New York City', 'value': 'NYC'},
+                {'label': u'Montréal', 'value': 'MTL'},
+                {'label': 'San Francisco', 'value': 'SF'}
+            ],
+            value='MTL'
+        )
+    ]),
+    html.Div([
     dcc.Graph(figure=fig)
+])
 ])
 
 if __name__ == '__main__':
