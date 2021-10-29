@@ -17,10 +17,12 @@
 - Hosting the application within a cloud environment
 
   - Seen people use AWS
-  [x] Heroku
+    [x] Heroku
 
 - Set up a pipeline to deploy the application to the cloud environment.
-- Set up a linter for our code?
-[x] How do we style the dashboard?
-[x] Adding interactivity to the dashboard, in some way, a dropdown perhaps?
-[x] Add documentation to the README, as to how you install/run the project.
+  [x] Set up a linter for our code?
+  [x] How do we style the dashboard?
+  [x] Adding interactivity to the dashboard, in some way, a dropdown perhaps?
+  [x] Add documentation to the README, as to how you install/run the project.
+
+- Remove compiled python files already in git.
