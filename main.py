@@ -6,6 +6,7 @@ import pandas as pd
 
 
 app = dash.Dash(__name__)
+server = app.server
 
 def convert_from_CSV_to_DF(data):
     df = pd.read_csv(r'data', low_memory=False)
