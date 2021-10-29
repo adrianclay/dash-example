@@ -17,7 +17,7 @@
 - Hosting the application within a cloud environment
 
   - Seen people use AWS
-  [] Heroku
+  [x] Heroku
 
 - Set up a pipeline to deploy the application to the cloud environment.
 - Set up a linter for our code?
