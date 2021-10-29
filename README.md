@@ -1,8 +1,7 @@
-
-
 ## About The Project
 
 A test project exploring plotly and the ways we can create a data dashboard.
+https://plotlydashboardtest.herokuapp.com/
 
 
 ### Built With
@@ -20,13 +19,18 @@ In order to run the application you will need to install the following.
  Download python at https://python.org/downloads/
 
 * Plotly
-```sh
+  ```sh
     pip install dash
-```
-* pandas
+  ```
+* Pandas
   ```sh
     pip install pandas
   ```
+* Pylint
+  ```sh
+    pip install pylint
+  ```
+
 
 
 ### Installation
@@ -46,6 +50,11 @@ To run the application and start the server
 This will start the server. To see the dashboard go to http//127.0.0.1:8050/ in your browser
 
 To end the session simply type control^ C for Mac 
+
+linting 
+  ```sh
+    pylint main.py
+  ```
 ## Testing
 
 Unit tests are written in Pytest and can be found in the /tests directory. 
