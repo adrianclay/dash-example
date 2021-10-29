@@ -5,7 +5,6 @@ from io import StringIO
 import pandas as pd
 
 def test_convert_from_CSV_to_DF():
-	
 	# create dummy csv data
 	dummy_csv = StringIO("""\
 col1
