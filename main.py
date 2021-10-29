@@ -1,26 +1,23 @@
+"""
+visualise road casualty data
+"""
+
 import dash
 from dash import dcc
 import dash_html_components as html
 import plotly.express as px
 import pandas as pd
 
-"""
-visualise road casualty data
-"""
-
-
 app = dash.Dash(__name__)
 server = app.server
 
-def convert_from_CSV_to_DF(data):
-    """convert csv file to dataframe"""
-    converted_df = pd.read_csv(r'data', low_memory=False)
+def convert_from_CSV_to_DF(csv_filepath):
+    """Take in a CSV filepath and return a dataframe"""
+    converted_df = pd.read_csv(csv_filepath, low_memory=False)
     return converted_df
 
 
-
-
-df = pd.read_csv(r'data/dft-road-casualty-statistics-accident-2020.csv', low_memory=False)
+df = convert_from_CSV_to_DF('data/dft-road-casualty-statistics-accident-2020.csv')
 df['date']= pd.to_datetime(df['date'], format="%d/%m/%Y")
 
 # https://pandas.pydata.org/docs/reference/api/pandas.Series.to_frame.html#pandas-series-to-frame
